@@ -148,7 +148,7 @@ bin/dev              # Start Rails + Vite
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests.
 
 ```bash
-git clone https://github.com/pandev-srl/better_app_gen.git
+git clone https://github.com/umbertopeserico/better_app_gen.git
 cd better_app_gen
 bin/setup
 rake spec
@@ -158,7 +158,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pandev-srl/better_app_gen.
+Bug reports and pull requests are welcome on GitHub at https://github.com/umbertopeserico/better_app_gen.
 
 ## License
 

@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     (en, it, de, fr, es, pt, nl, pl, ru, ja, zh), and optional SimpleForm integration with
     Tailwind styling. Get a fully configured Rails 8 app in seconds.
   DESC
-  spec.homepage = "https://github.com/pandev-srl/better_app_gen"
+  spec.homepage = "https://github.com/umbertopeserico/better_app_gen"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2.0"
 

@@ -50,21 +50,20 @@ jobs:
           git push origin release/v${{ inputs.version }}
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: release/v${{ inputs.version }}
-          base: main
-          title: "Release v${{ inputs.version }}"
-          body: |
-            ## Release v${{ inputs.version }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head release/v${{ inputs.version }} \
+            --title "Release v${{ inputs.version }}" \
+            --body "## Release v${{ inputs.version }}
 
-            This PR prepares the release of version ${{ inputs.version }}.
+          This PR prepares the release of version ${{ inputs.version }}.
 
-            ### Checklist
-            - [ ] Version updated in `lib/better_app_gen/version.rb`
-            - [ ] CHANGELOG.md updated
-            - [ ] All tests passing
+          ### Checklist
+          - [ ] Version updated in \`lib/better_app_gen/version.rb\`
+          - [ ] CHANGELOG.md updated
+          - [ ] All tests passing
 
-            **After merging**: Tag is created automatically → RubyGems publish triggered
-          delete-branch: true
+          **After merging**: Tag is created automatically → RubyGems publish triggered"
