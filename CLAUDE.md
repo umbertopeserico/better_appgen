@@ -75,3 +75,10 @@ Use conventional commits format:
 - `refactor:` code refactoring
 - `test:` adding/updating tests
 - `chore:` maintenance tasks
+- `ci:` CI/CD changes
+
+## Release
+See `RELEASE.md`. Automated via GitHub Actions:
+1. Run "Prepare Release" workflow with version
+2. Merge the PR
+3. Tag auto-created → publishes to RubyGems
