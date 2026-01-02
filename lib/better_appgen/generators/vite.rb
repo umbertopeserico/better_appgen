@@ -47,7 +47,7 @@ module BetterAppgen
 
         # Remove default application.css if exists
         css_file = File.join(app_path, "app/assets/stylesheets/application.css")
-        FileUtils.rm(css_file) if File.exist?(css_file)
+        FileUtils.rm_f(css_file)
       end
 
       def setup_package_json
@@ -79,8 +79,10 @@ module BetterAppgen
 
       def create_javascript
         create_file_from_template("app/assets/javascripts/application.js", "vite/application.js.erb")
-        create_file_from_template("app/assets/javascripts/controllers/application.js", "vite/controllers/application.js.erb")
-        create_file_from_template("app/assets/javascripts/controllers/hello_controller.js", "vite/controllers/hello_controller.js.erb")
+        create_file_from_template("app/assets/javascripts/controllers/application.js",
+                                  "vite/controllers/application.js.erb")
+        create_file_from_template("app/assets/javascripts/controllers/hello_controller.js",
+                                  "vite/controllers/hello_controller.js.erb")
         create_file_from_template("app/assets/javascripts/controllers/index.js", "vite/controllers/index.js.erb")
       end
 
@@ -111,7 +113,8 @@ module BetterAppgen
       end
 
       def create_layout
-        create_file_from_template("app/views/layouts/application.html.erb", "app/views/layouts/application.html.erb.erb")
+        create_file_from_template("app/views/layouts/application.html.erb",
+                                  "app/views/layouts/application.html.erb.erb")
       end
     end
   end

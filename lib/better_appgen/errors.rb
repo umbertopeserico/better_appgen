@@ -10,7 +10,7 @@ module BetterAppgen
 
     def initialize(missing_dependencies)
       @missing_dependencies = missing_dependencies
-      super("Missing required dependencies: #{missing_dependencies.join(', ')}")
+      super("Missing required dependencies: #{missing_dependencies.join(", ")}")
     end
   end
 

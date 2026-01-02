@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "English"
 module BetterAppgen
   # Checks for required system dependencies
   class DependencyChecker
@@ -37,7 +38,7 @@ module BetterAppgen
         if missing.empty?
           puts pastel.green("All dependencies satisfied!")
         else
-          puts pastel.red("Missing dependencies: #{missing.join(', ')}")
+          puts pastel.red("Missing dependencies: #{missing.join(", ")}")
         end
       end
 
@@ -54,19 +55,19 @@ module BetterAppgen
 
     # Returns missing dependencies as an array
     def missing_dependencies
-      @results.select { |_, r| !r[:satisfied] }.keys
+      @results.reject { |_, r| r[:satisfied] }.keys
     end
 
     private
 
-    def check_dependency(name, config)
+    def check_dependency(_name, config)
       # Run command outside of bundler environment to detect system-wide installations
       output = nil
       installed = false
 
       Bundler.with_unbundled_env do
         output = `#{config[:command]} 2>&1`.strip
-        installed = $?.success?
+        installed = $CHILD_STATUS.success?
       end
 
       if installed && config[:min_version]

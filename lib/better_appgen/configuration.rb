@@ -78,7 +78,7 @@ module BetterAppgen
     def validate_locale!
       return if SUPPORTED_LOCALES.include?(locale)
 
-      raise Error, "Unsupported locale '#{locale}'. Supported locales: #{SUPPORTED_LOCALES.join(', ')}"
+      raise Error, "Unsupported locale '#{locale}'. Supported locales: #{SUPPORTED_LOCALES.join(", ")}"
     end
 
     def validate_ports!

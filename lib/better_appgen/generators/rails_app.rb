@@ -30,7 +30,7 @@ module BetterAppgen
       private
 
       def create_rails_app
-        command = "rails new #{app_name} #{SKIP_FLAGS.join(' ')}"
+        command = "rails new #{app_name} #{SKIP_FLAGS.join(" ")}"
         Dir.chdir(File.dirname(app_path)) do
           # Run rails command outside of bundler environment
           Bundler.with_unbundled_env do
@@ -46,7 +46,7 @@ module BetterAppgen
         schema_files << File.join(app_path, "db", "schema.rb")
 
         schema_files.each do |file|
-          FileUtils.rm(file) if File.exist?(file)
+          FileUtils.rm_f(file)
         end
       end
 

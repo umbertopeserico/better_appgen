@@ -7,21 +7,21 @@ RSpec.describe BetterAppgen do
 
   describe ".root" do
     it "returns a Pathname" do
-      expect(BetterAppgen.root).to be_a(Pathname)
+      expect(described_class.root).to be_a(Pathname)
     end
 
     it "points to the gem root directory" do
-      expect(BetterAppgen.root.join("lib", "better_appgen.rb")).to exist
+      expect(described_class.root.join("lib", "better_appgen.rb")).to exist
     end
   end
 
   describe ".templates_path" do
     it "returns a Pathname" do
-      expect(BetterAppgen.templates_path).to be_a(Pathname)
+      expect(described_class.templates_path).to be_a(Pathname)
     end
 
     it "points to the templates directory" do
-      expect(BetterAppgen.templates_path).to exist
+      expect(described_class.templates_path).to exist
     end
   end
 end

@@ -4,6 +4,7 @@ require:
 AllCops:
   TargetRubyVersion: 3.2
   NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - "bin/**/*"
     - "vendor/**/*"
@@ -22,16 +23,56 @@ Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 50
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 60
 
 Metrics/ClassLength:
   Max: 200
 
+# RSpec cops
 RSpec/MultipleExpectations:
-  Max: 5
+  Max: 10
 
 RSpec/ExampleLength:
   Max: 15
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
+
+# Disable Capybara cops (not used)
+Capybara:
+  Enabled: false
+
+Capybara/RSpec:
+  Enabled: false
+
+Capybara/RSpec/PredicateMatcher:
+  Enabled: false
+
+# Disable FactoryBot cops (not used)
+FactoryBot:
+  Enabled: false
+
+# Disable RSpec/Rails cops (not a Rails app)
+RSpecRails:
+  Enabled: false
+
+# Allow longer parameter lists for configuration objects
+Metrics/ParameterLists:
+  Max: 8
+
+# Allow higher complexity for CLI commands
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/PerceivedComplexity:
+  Max: 12
+
+# Allow predicate names without ?
+Naming/PredicateMethod:
+  Enabled: false

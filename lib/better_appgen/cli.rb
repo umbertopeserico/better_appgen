@@ -52,9 +52,6 @@ module BetterAppgen
           with_simple_form: options[:with_simple_form],
           skip_docker: options[:skip_docker]
         )
-      rescue InvalidAppNameError => e
-        say pastel.red("Error: #{e.message}")
-        exit 1
       rescue Error => e
         say pastel.red("Error: #{e.message}")
         exit 1
@@ -100,6 +97,9 @@ module BetterAppgen
         say "  script/dc-down && script/dc-up  # Restart containers"
       end
 
+      # Warn if locale doesn't have translation files
+      warn_about_missing_locale_files(config.locale, pastel)
+
       say pastel.cyan("\nHappy coding!")
     end
 
@@ -119,5 +119,18 @@ module BetterAppgen
 
     # Version aliases
     map %w[-v --version] => :version
+
+    # Locales that have translation templates included
+    LOCALES_WITH_TEMPLATES = %w[en it].freeze
+
+    private
+
+    def warn_about_missing_locale_files(locale, pastel)
+      return if LOCALES_WITH_TEMPLATES.include?(locale)
+
+      say pastel.yellow("\nNote: Locale '#{locale}' does not include translation files.")
+      say pastel.yellow("You may want to add translations from the rails-i18n gem:")
+      say pastel.yellow("  https://github.com/svenfuchs/rails-i18n")
+    end
   end
 end

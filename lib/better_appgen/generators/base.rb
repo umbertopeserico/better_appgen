@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "English"
 require "erb"
 require "fileutils"
 require "json"
@@ -209,7 +210,7 @@ module BetterAppgen
       def run_command!(command)
         Dir.chdir(app_path) do
           success = system(command)
-          raise CommandFailedError.new(command, $?.exitstatus) unless success
+          raise CommandFailedError.new(command, $CHILD_STATUS.exitstatus) unless success
         end
       end
     end
